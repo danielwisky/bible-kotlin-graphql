@@ -1,0 +1,9 @@
+type BookOut {
+  id: ID!
+  name: String
+}
+
+input BookFilterIn {
+  name: String
+  nameLike: String
+}

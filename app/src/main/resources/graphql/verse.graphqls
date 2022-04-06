@@ -1,0 +1,15 @@
+type VerseOut {
+  id: ID!
+  version: VersionOut
+  book: BookOut
+  chapter: Int
+  number: Int
+  verse: String
+}
+
+input VerseFilterIn {
+  version: String
+  book: String
+  chapter: String
+  verseLike: String
+}

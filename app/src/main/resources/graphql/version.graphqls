@@ -1,0 +1,9 @@
+type VersionOut {
+  id: ID!
+  name: String
+}
+
+input VersionFilterIn {
+  name: String
+  nameLike: String
+}

@@ -1,0 +1,9 @@
+type ChapterOut {
+  id: ID!
+  book: BookOut
+  number: String
+}
+
+input ChapterFilterIn {
+  book: String
+}

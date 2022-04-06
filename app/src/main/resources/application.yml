@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: bible-graphql
+  datasource:
+    url: jdbc:mysql://localhost:3306/bible
+    username: root
+    password: root
+  jpa:
+    generate-ddl: false
+    show-sql: true
