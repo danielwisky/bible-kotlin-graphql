@@ -20,9 +20,9 @@ class ChapterGraphQL(private val bookDataGateway: ChapterDataGateway) {
 
     @QueryMapping
     fun chapters(
-        @Argument filter: ChapterFilterIn?,
-        @Argument first: Int?,
-        @Argument after: String?,
+        @Argument("filter") filter: ChapterFilterIn?,
+        @Argument("first") first: Int?,
+        @Argument("after") after: String?,
     ): Connection<ChapterOut> {
         val page = bookDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content

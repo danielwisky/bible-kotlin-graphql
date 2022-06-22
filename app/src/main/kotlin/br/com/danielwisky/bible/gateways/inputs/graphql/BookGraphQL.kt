@@ -20,9 +20,9 @@ class BookGraphQL(private val bookDataGateway: BookDataGateway) {
 
     @QueryMapping
     fun books(
-        @Argument filter: BookFilterIn?,
-        @Argument first: Int?,
-        @Argument after: String?,
+        @Argument("filter") filter: BookFilterIn?,
+        @Argument("first") first: Int?,
+        @Argument("after") after: String?,
     ): Connection<BookOut> {
         val page = bookDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content

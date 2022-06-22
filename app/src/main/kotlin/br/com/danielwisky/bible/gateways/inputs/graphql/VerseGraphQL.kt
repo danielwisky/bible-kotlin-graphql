@@ -20,9 +20,9 @@ class VerseGraphQL(private val verseDataGateway: VerseDataGateway) {
 
     @QueryMapping
     fun verses(
-        @Argument filter: VerseFilterIn?,
-        @Argument first: Int?,
-        @Argument after: String?,
+        @Argument("filter") filter: VerseFilterIn?,
+        @Argument("first") first: Int?,
+        @Argument("after") after: String?,
     ): Connection<VerseOut> {
         val page = verseDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content

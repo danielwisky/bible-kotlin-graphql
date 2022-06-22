@@ -20,9 +20,9 @@ class VersionGraphQL(private val versionDataGateway: VersionDataGateway) {
 
     @QueryMapping
     fun versions(
-        @Argument filter: VersionFilterIn?,
-        @Argument first: Int?,
-        @Argument after: String?,
+        @Argument("filter") filter: VersionFilterIn?,
+        @Argument("first") first: Int?,
+        @Argument("after") after: String?,
     ): Connection<VersionOut> {
         val page = versionDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content
