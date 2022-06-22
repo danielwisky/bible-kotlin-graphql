@@ -4,7 +4,7 @@ import br.com.danielwisky.bible.domains.Book
 
 data class BookOut(
     var id: String? = null,
-    var name: String? = null
+    var name: String? = null,
 ) {
 
     constructor(book: Book) : this(

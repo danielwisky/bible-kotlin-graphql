@@ -15,8 +15,18 @@ object VerseEntitySpecification {
         return Specification<VerseEntity> { root, _, builder: CriteriaBuilder ->
             val predicates: MutableList<Predicate> = ArrayList()
             addGreaterThanConditionIfNotNull(builder, predicates, after, root.get("id"))
-            addEqualConditionIfNotNull(builder, predicates, filter?.book, root.get<String?>("book").get("id"))
-            addEqualConditionIfNotNull(builder, predicates, filter?.version, root.get<String?>("version").get("id"))
+            addEqualConditionIfNotNull(
+                builder,
+                predicates,
+                filter?.book,
+                root.get<String?>("book").get("id")
+            )
+            addEqualConditionIfNotNull(
+                builder,
+                predicates,
+                filter?.version,
+                root.get<String?>("version").get("id")
+            )
             addEqualConditionIfNotNull(builder, predicates, filter?.chapter, root.get("chapter"))
             addLikeConditionIfNotBlank(builder, predicates, filter?.verseLike, root.get("verse"))
 

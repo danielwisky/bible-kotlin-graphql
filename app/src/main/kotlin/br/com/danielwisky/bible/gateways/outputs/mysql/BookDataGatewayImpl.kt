@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class BookDataGatewayImpl(
-    private val bookEntityRepository: BookEntityRepository
+    private val bookEntityRepository: BookEntityRepository,
 ) : BookDataGateway {
 
     override fun search(filter: BookFilter?, first: Int?, after: String?): Page<Book> {

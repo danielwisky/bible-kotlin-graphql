@@ -15,7 +15,12 @@ object ChapterEntitySpecification {
         return Specification { root: Root<ChapterEntity>, _, builder: CriteriaBuilder ->
             val predicates: MutableList<Predicate> = ArrayList()
             addGreaterThanConditionIfNotNull(builder, predicates, after, root.get("id"))
-            addEqualConditionIfNotNull(builder, predicates, filter?.book, root.get<String?>("book").get("id"))
+            addEqualConditionIfNotNull(
+                builder,
+                predicates,
+                filter?.book,
+                root.get<String?>("book").get("id")
+            )
             builder.and(*predicates.toTypedArray())
         }
     }
