@@ -7,20 +7,22 @@ import br.com.danielwisky.bible.utils.CursorUtils.createCursorWith
 import br.com.danielwisky.bible.utils.CursorUtils.decodeBase64
 import br.com.danielwisky.bible.utils.CursorUtils.getFirstCursorFrom
 import br.com.danielwisky.bible.utils.CursorUtils.getLastCursorFrom
-import graphql.kickstart.tools.GraphQLQueryResolver
 import graphql.relay.Connection
 import graphql.relay.DefaultConnection
 import graphql.relay.DefaultEdge
 import graphql.relay.DefaultPageInfo
-import org.springframework.stereotype.Component
+import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.QueryMapping
+import org.springframework.stereotype.Controller
 
-@Component
-class BookGraphQL(private val bookDataGateway: BookDataGateway) : GraphQLQueryResolver {
+@Controller
+class BookGraphQL(private val bookDataGateway: BookDataGateway) {
 
+    @QueryMapping
     fun books(
-        filter: BookFilterIn?,
-        first: Int?,
-        after: String?,
+        @Argument filter: BookFilterIn?,
+        @Argument first: Int?,
+        @Argument after: String?,
     ): Connection<BookOut> {
         val page = bookDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content

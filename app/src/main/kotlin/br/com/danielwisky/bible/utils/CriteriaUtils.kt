@@ -24,7 +24,7 @@ object CriteriaUtils {
         value: String?,
         field: Path<String>,
     ) {
-        if (nonNull(value)) {
+        if (!value.isNullOrEmpty()) {
             predicates.add(builder.equal(field, value))
         }
     }
@@ -46,7 +46,7 @@ object CriteriaUtils {
         value: String?,
         field: Path<String>,
     ) {
-        if (nonNull(value)) {
+        if (!value.isNullOrEmpty()) {
             predicates.add(builder.greaterThan(field, value))
         }
     }

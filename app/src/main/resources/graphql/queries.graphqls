@@ -1,6 +1,6 @@
 type Query {
-  versions(filter: VersionFilterIn, first: Int, after: String): VersionOutConnection @connection(for: "VersionOut")
-  books(filter: BookFilterIn, first: Int, after: String): BookOutConnection @connection(for: "BookOut")
-  chapters(filter: ChapterFilterIn, first: Int, after: String): ChapterOutConnection @connection(for: "ChapterOut")
-  verses(filter: VerseFilterIn, first: Int, after: String): VerseOutConnection @connection(for: "VerseOut")
+  versions(filter: VersionFilterIn, first: Int, after: String): VersionOutConnection
+  books(filter: BookFilterIn, first: Int, after: String): BookOutConnection
+  chapters(filter: ChapterFilterIn, first: Int, after: String): ChapterOutConnection
+  verses(filter: VerseFilterIn, first: Int, after: String): VerseOutConnection
 }

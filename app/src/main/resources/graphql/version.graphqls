@@ -3,6 +3,16 @@ type VersionOut {
   name: String
 }
 
+type VersionEdgeOut {
+  cursor: String
+  node: VersionOut
+}
+
+type VersionOutConnection {
+  edges: [VersionEdgeOut]
+  pageInfo: PageInfo
+}
+
 input VersionFilterIn {
   name: String
   nameLike: String

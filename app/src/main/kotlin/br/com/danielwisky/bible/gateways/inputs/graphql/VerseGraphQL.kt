@@ -7,20 +7,22 @@ import br.com.danielwisky.bible.utils.CursorUtils.createCursorWith
 import br.com.danielwisky.bible.utils.CursorUtils.decodeBase64
 import br.com.danielwisky.bible.utils.CursorUtils.getFirstCursorFrom
 import br.com.danielwisky.bible.utils.CursorUtils.getLastCursorFrom
-import graphql.kickstart.tools.GraphQLQueryResolver
 import graphql.relay.Connection
 import graphql.relay.DefaultConnection
 import graphql.relay.DefaultEdge
 import graphql.relay.DefaultPageInfo
-import org.springframework.stereotype.Component
+import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.QueryMapping
+import org.springframework.stereotype.Controller
 
-@Component
-class VerseGraphQL(private val verseDataGateway: VerseDataGateway) : GraphQLQueryResolver {
+@Controller
+class VerseGraphQL(private val verseDataGateway: VerseDataGateway) {
 
+    @QueryMapping
     fun verses(
-        filter: VerseFilterIn?,
-        first: Int?,
-        after: String?,
+        @Argument filter: VerseFilterIn?,
+        @Argument first: Int?,
+        @Argument after: String?,
     ): Connection<VerseOut> {
         val page = verseDataGateway.search(filter?.toDomain(), first, decodeBase64(after))
         val edges = page.content

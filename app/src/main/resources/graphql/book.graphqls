@@ -3,6 +3,16 @@ type BookOut {
   name: String
 }
 
+type BookEdgeOut {
+  cursor: String
+  node: BookOut
+}
+
+type BookOutConnection {
+  edges: [BookEdgeOut]
+  pageInfo: PageInfo
+}
+
 input BookFilterIn {
   name: String
   nameLike: String

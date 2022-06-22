@@ -4,6 +4,16 @@ type ChapterOut {
   number: String
 }
 
+type ChapterEdgeOut {
+  cursor: String
+  node: ChapterOut
+}
+
+type ChapterOutConnection {
+  edges: [ChapterEdgeOut]
+  pageInfo: PageInfo
+}
+
 input ChapterFilterIn {
   book: String
 }

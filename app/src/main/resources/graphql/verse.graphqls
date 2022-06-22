@@ -7,6 +7,16 @@ type VerseOut {
   verse: String
 }
 
+type VerseEdgeOut {
+  cursor: String
+  node: VerseOut
+}
+
+type VerseOutConnection {
+  edges: [VerseEdgeOut]
+  pageInfo: PageInfo
+}
+
 input VerseFilterIn {
   version: String
   book: String
